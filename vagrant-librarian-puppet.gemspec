@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   #
   # it's a bit surprising that bundler can't resolve this itself...
   spec.add_runtime_dependency "her", "< 0.7.3"
-  spec.add_runtime_dependency "puppet", "~> 3.4.3"
+  spec.add_runtime_dependency "puppet", "~> 3.7.4"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
