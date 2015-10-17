@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_runtime_dependency "librarian-puppet", "~> 2.0.1"
+  spec.add_runtime_dependency "librarian-puppet", "~> 2.1.0"
   # puppet_forge (all versions up to this date) have a dep on her ~> 0.6,
   # her >= 0.7.3 pulls in activemodel 4.2,
   # which pulls in i18n ~> 0.7,
@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   #
   # it's a bit surprising that bundler can't resolve this itself...
   spec.add_runtime_dependency "her", "< 0.7.3"
-  spec.add_runtime_dependency "puppet", "~> 3.4.3"
+  spec.add_runtime_dependency "puppet", "~> 3.7.4"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
