@@ -36,13 +36,13 @@ module VagrantPlugins
         end
 
         def provision(puppetfile_dir, env, config)
-          if File.exist? File.join(env[:root_path], config.puppetfile_path(puppetfile_dir))
+          puppetfile_dir = File.realpath(puppetfile_dir, env[:root_path])
+          if File.exists? config.puppetfile_path(puppetfile_dir)
 
             env[:ui].info "Installing Puppet modules in \"#{puppetfile_dir}\" with Librarian-Puppet..."
 
             # Determine if we need to persist placeholder file
             placeholder_file = File.join(
-              env[:root_path],
               puppetfile_dir,
               'modules',
               config.placeholder_filename
@@ -54,7 +54,7 @@ module VagrantPlugins
             end
 
             environment = Librarian::Puppet::Environment.new({
-              :project_path => File.join(env[:root_path], puppetfile_dir)
+              :project_path => puppetfile_dir
             })
             environment.config_db.local['destructive']  = config.destructive.to_s
             environment.config_db.local['use-v1-api']   = config.use_v1_api
