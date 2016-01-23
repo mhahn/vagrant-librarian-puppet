@@ -23,11 +23,12 @@ Gem::Specification.new do |spec|
   # her >= 0.7.3 pulls in activemodel 4.2,
   # which pulls in i18n ~> 0.7,
   # which is incompatible with vagrant 1.7.2 due to a hard dep on i18n 0.6.11.
+  # See https://github.com/rodjek/librarian-puppet/pull/331
   #
   # it's a bit surprising that bundler can't resolve this itself...
   spec.add_runtime_dependency "her", "< 0.7.3"
-  spec.add_runtime_dependency "puppet", "~> 3.4.3"
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_runtime_dependency "puppet", "~> 4.3.1"
+  spec.add_development_dependency "bundler", ">= 1.5.2", "<= 1.10.6"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
 end
