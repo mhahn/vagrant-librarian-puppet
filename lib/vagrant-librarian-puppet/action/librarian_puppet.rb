@@ -16,21 +16,11 @@ module VagrantPlugins
         def call(env)
           config = env[:machine].config.librarian_puppet
           if provisioned?
-            # NB: Librarian::Puppet::Environment calls `which puppet` so we
-            # need to make sure VAGRANT_HOME/gems/bin has been added to the
-            # path.
-            original_path = ENV['PATH']
-            bin_path = env[:gems_path].join('bin')
-            ENV['PATH'] = "#{bin_path}#{::File::PATH_SEPARATOR}#{ENV['PATH']}"
-
             puppetfile_dirs = config.puppetfile_dir.kind_of?(Array) ? config.puppetfile_dir : [config.puppetfile_dir]
 
             puppetfile_dirs.each do |puppetfile_dir|
               provision(puppetfile_dir, env, config)
             end
-
-            # Restore the original path
-            ENV['PATH'] = original_path
           end
           @app.call(env)
         end
