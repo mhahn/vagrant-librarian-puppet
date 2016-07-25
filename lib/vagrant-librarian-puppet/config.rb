@@ -6,6 +6,7 @@ module VagrantPlugins
       attr_accessor :destructive
       attr_accessor :placeholder_filename
       attr_accessor :resolve_options
+      attr_accessor :modules_dirname
 
       def initialize
         @puppetfile_dir = UNSET_VALUE
@@ -13,6 +14,7 @@ module VagrantPlugins
         @use_v1_api = UNSET_VALUE
         @destructive = UNSET_VALUE
         @resolve_options = UNSET_VALUE
+        @modules_dirname = UNSET_VALUE
       end
 
       def finalize!
@@ -21,6 +23,7 @@ module VagrantPlugins
         @resolve_options = {} if @resolve_options == UNSET_VALUE
         @use_v1_api = '1' if @use_v1_api == UNSET_VALUE
         @destructive = true if @destructive == UNSET_VALUE
+        @modules_dirname = 'modules' if @modules_dirname = UNSET_VALUE
       end
 
       def validate(machine)

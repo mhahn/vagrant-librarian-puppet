@@ -44,7 +44,7 @@ module VagrantPlugins
             placeholder_file = File.join(
               env[:root_path],
               puppetfile_dir,
-              'modules',
+              config.modules_dirname,
               config.placeholder_filename
             )
             if File.exist? placeholder_file
@@ -58,6 +58,7 @@ module VagrantPlugins
             })
             environment.config_db.local['destructive']  = config.destructive.to_s
             environment.config_db.local['use-v1-api']   = config.use_v1_api
+            environment.config_db.local['path']         = config.modules_dirname
 
             Librarian::Action::Ensure.new(environment).run
             Librarian::Action::Resolve.new(environment, config.resolve_options).run
